@@ -64,5 +64,15 @@ namespace ProductReviewManagementLINQ
                     + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
             }
         }
+        //Selectiong Id And
+        public void SelectIdAndReview(List<ProductReview> listProductReview)
+        {
+            var recordedData = (from reviews in listProductReview
+                                select "ProductId :" + reviews.Product_ID + " Review :" + reviews.Review);
+            foreach (var item in recordedData)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }
