@@ -9,6 +9,8 @@ namespace ProductReviewManagementLINQ
     public class ReviewManagement
     {
         public readonly DataTable dataTable = new DataTable();
+
+        //Retriving Top Three Records From The List
         public void TopRecords(List<ProductReview> listProductReview)
         {
             var recordedData = (from productReviews in listProductReview
@@ -20,6 +22,8 @@ namespace ProductReviewManagementLINQ
                     + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
             }
         }
+
+        //Retriving The Given data From The List
         public void SelectedRecords(List<ProductReview> listProductReview)
         {
             var recordedData = from productReviews in listProductReview
@@ -30,6 +34,15 @@ namespace ProductReviewManagementLINQ
             {
                 Console.WriteLine("ProductID:- " + list.Product_ID + " " + "UserID:- " + list.User_ID
                     + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
+            }
+        }
+        //Retriving Count Of Records Present For Each Product Id
+        public void RetrieveCountOfRecords(List<ProductReview> listProductReview)
+        {
+            var recordedData = listProductReview.GroupBy(x => x.Product_ID).Select(x => new { Product_ID = x.Key, Count = x.Count() });
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine(list.Product_ID + "----" + list.Count);
             }
         }
     }

@@ -25,7 +25,7 @@ namespace ProductReviewManagementLINQ
                 new ProductReview(){Product_ID=11,User_ID=1,Rating=3,Review="nice",isLike=true}
             };
             ReviewManagement management = new ReviewManagement();
-            management.SelectedRecords(productReviewList);
+            management.RetrieveCountOfRecords(productReviewList); //Calling RetriveCOuntOfRecords Method
         }
     }
 }
